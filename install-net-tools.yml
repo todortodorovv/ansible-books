@@ -1,0 +1,20 @@
+
+---
+  - name: Updating the apt packages
+    hosts: servers
+    become: yes
+    tasks:
+      - name: apt updating
+        apt:
+          upgrade: yes
+          update_cache: yes
+
+
+  - name: Install net-tools to hosts
+    hosts: servers
+    become: true
+    tasks:
+      - name: download net-tools
+        apt:
+          name: net-tools
+          state: latest
